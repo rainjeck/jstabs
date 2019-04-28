@@ -1,0 +1,19 @@
+.jstabs-tab {
+  display: none;
+  opacity: 0;
+  box-sizing: border-box;
+}
+
+.jstabs-tab.is-active {
+  display: block;
+  animation: jsTabsFadeIn 0.25s linear 1 forwards;
+}
+
+@keyframes jsTabsFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

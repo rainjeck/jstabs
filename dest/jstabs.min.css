@@ -1,0 +1,1 @@
+.jstabs-tab{display:none;opacity:0;-webkit-box-sizing:border-box;box-sizing:border-box}.jstabs-tab.is-active{display:block;-webkit-animation:jsTabsFadeIn .25s linear 1 forwards;animation:jsTabsFadeIn .25s linear 1 forwards}@-webkit-keyframes jsTabsFadeIn{0%{opacity:0}100%{opacity:1}}@keyframes jsTabsFadeIn{0%{opacity:0}100%{opacity:1}}

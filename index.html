@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jsTabs Plugin</title>
+  <link rel="stylesheet" href="dest/jstabs.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    body {
+      padding: 2em;
+    }
+    h1, h2 {
+      margin-bottom: 1em;
+    }
+    pre code {
+      white-space: pre;
+      word-break: normal;
+      line-height: 1.4;
+    }
+    pre code em {
+      color: #9e9e9e;
+    }
+    .tabNav {
+      margin-bottom: 2em;
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+    }
+    .tabItem {
+      padding: 0.5em 1em;
+      border: 1px solid #eee;
+      cursor: pointer;
+    }
+    .tabItem:hover {
+      background-color: #ccc;
+      -webkit-transition: all 0.25s linear;
+      -o-transition: all 0.25s linear;
+      transition: all 0.25s linear;
+    }
+    .tabItem.is-active {
+      background-color: #eee;
+    }
+    .tabContent {
+      padding: 1em;
+    }
+    .jstabs-tab.is-active .tabContent {
+      border: 1px solid #eee;
+      margin-bottom: 2em;
+    }
+    .demoContainer {
+      padding-bottom: 4em;
+      margin-bottom: 2em;
+      border-bottom: 1px solid #ccc;
+    }
+    .tabsInContainer {
+      margin: 1em;
+      padding: 1em;
+      border: 1px solid #eee;
+    }
+    button {
+      background: transparent;
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      outline: none;
+    }
+    button:hover {
+      background-color: #ccc;
+      -webkit-transition: all 0.25s linear;
+      -o-transition: all 0.25s linear;
+      transition: all 0.25s linear;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center;">jsTabs</h1>
+
+  <div class="demoContainer">
+    <div id="tabs" class="tabNav">
+      <div class="tabItem" data-tab="tab1">Layout</div>
+      <div class="tabItem" data-tab="tab2">Usage</div>
+    </div>
+
+    <div class="tab jstabs-tab" id="tab1">
+      <div class="tabContent">
+        <h2>Layout</h2>
+        <pre>
+          <code>
+            &lt;div id="tabs"&gt;
+              &lt;div data-tab="tab1"&gt;Tab 1&lt;/div&gt;
+              &lt;div data-tab="tab2"&gt;Tab 2&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="jstabs-tab" id="tab1"&gt;Tab content 1&lt;/div&gt;
+            &lt;div class="jstabs-tab" id="tab2"&gt;Tab content 2&lt;/div&gt;
+          </code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="tab jstabs-tab" id="tab2">
+      <div class="tabContent">
+        <h2>Usage</h2>
+
+        <p>Tabs init:</p>
+
+        <pre>
+          <code>
+            var tabs = new jstabs('#tabs', {
+              activeTab: '', <em>// active tab on init (element id without "#", default - first)</em>
+              disableInputs: false, <em>// if tab contains input elements - disable inputs when tab switch off</em>
+              hash: false, <em>// use hash</em>
+              before: function() {}, <em>// action before switch on tab. this - tabs options</em>
+              after: function() {}, <em>// action after tab switch on. this - tabs options</em>
+            });
+          </code>
+        </pre>
+
+        <p>Switch to tab:</p>
+        <pre><code>
+          tabs.to('tab2');
+        </code></pre>
+      </div>
+    </div>
+
+    <button class="to2">Switch to tab 2</button>
+  </div>
+
+
+  <h1>Nesting & Hash demo</h1>
+
+  <div class="demoContainer">
+    <div id="tabs2" class="tabNav">
+      <div class="tabItem" data-tab="tab11">Tab 1-1</div>
+      <div class="tabItem" data-tab="tab12">Tab 1-2</div>
+    </div>
+
+    <div class="tab jstabs-tab" id="tab11">
+      <p>Tab 1-1</p>
+
+      <div class="tabsInContainer">
+        <div id="tabsIn" class="tabNav">
+          <div class="tabItem" data-tab="tabIn1">Tab 1-1</div>
+          <div class="tabItem" data-tab="tabIn2">Tab 1-2</div>
+        </div>
+        <div class="tab jstabs-tab" id="tabIn1">
+          <p>Tab In 1</p>
+        </div>
+        <div class="tab jstabs-tab" id="tabIn2">
+          <p>Tab In 2</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tab jstabs-tab" id="tab12">
+      <p>Tab 1-2</p>
+      <input type="text" value="demo input">
+    </div>
+  </div>
+
+  <script src="dest/jstabs.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var tabs = new jstabs("#tabs");
+
+      document.querySelector(".to2").addEventListener("click", function(e) {
+        tabs.to("tab2");
+      });
+
+      var tabs2 = new jstabs('#tabs2', {
+        hash: true,
+        disableInputs: true
+      });
+
+      var tabsIn = new jstabs("#tabsIn");
+    });
+  </script>
+</body>
+</html>
