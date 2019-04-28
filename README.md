@@ -7,6 +7,9 @@ Support:
  - Nested tabs
  - Disable/enable input fields in tab
 
+## Files
+Include ```jstabs.min.css``` and ```jstabs.min.js```.
+
 ## Layout
 ```
 <div id="tabs">
