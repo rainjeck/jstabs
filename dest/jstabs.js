@@ -1,12 +1,12 @@
-(function (root, factory) {
-    if ( typeof define === 'function' && define.amd ) {
-        define(factory);
-    } else if ( typeof exports === 'object' ) {
-        module.exports = factory;
-    } else {
-        root.jstabs = factory(root);
-    }
-})(this, function (root) {
+(function(root, factory) {
+  if (typeof define === "function" && define.amd) {
+    define(factory);
+  } else if (typeof exports === "object") {
+    module.exports = factory;
+  } else {
+    root.jstabs = factory(root);
+  }
+})(this, function(root) {
   "use strict";
 
   var defaults = {};
@@ -21,10 +21,9 @@
       }
     }
     return extended;
-  };
+  }
 
   function off(settings) {
-
     [].forEach.call(settings.tabItems, function(tabItem) {
       tabItem.classList.remove("is-active");
     });
@@ -32,7 +31,7 @@
     [].forEach.call(settings.tabs, function(tab) {
       tab.classList.remove("is-active");
     });
-  };
+  }
 
   function hash(settings) {
     var hash = window.location.hash.substring(1);
@@ -40,17 +39,16 @@
     var firstTab = settings.tabItems[0].getAttribute("data-tab");
     var activeTab = settings.activeTab;
 
-    if (!hash && (firstTab != activeTab) ) {
-      window.location.hash = '#' +activeTab;
+    if (!hash && firstTab != activeTab) {
+      window.location.hash = "#" + activeTab;
     }
 
     if (hash) {
-      window.location.hash = '#' +activeTab;
+      window.location.hash = "#" + activeTab;
     }
-  };
+  }
 
   function to(tabID, settings) {
-
     var tabItems = Array.prototype.slice.call(settings.tabItems);
     var tabs = Array.prototype.slice.call(settings.tabs);
 
@@ -65,13 +63,13 @@
     })[0];
 
     if (!tab) {
-      console.error("Tab '" +tabID+ "' not found");
+      console.error("Tab '" + tabID + "' not found");
       return;
     }
 
     settings.activeTab = tabID;
 
-    if (settings.before && typeof settings.before === 'function') {
+    if (settings.before && typeof settings.before === "function") {
       settings.before(settings);
     }
 
@@ -92,14 +90,14 @@
       hash(settings);
     }
 
-    if (settings.after && typeof settings.after === 'function') {
+    if (settings.after && typeof settings.after === "function") {
       settings.after(settings);
     }
-  };
+  }
 
   function disableInputs(settings) {
     [].forEach.call(settings.tabs, function(tab) {
-      var inputs = tab.querySelectorAll("input");
+      var inputs = tab.querySelectorAll("input, select");
 
       if (inputs) {
         [].forEach.call(inputs, function(input) {
@@ -107,22 +105,21 @@
         });
       }
     });
-  };
+  }
 
   function enableInputs(tab) {
-    var inputs = tab.querySelectorAll("input");
+    var inputs = tab.querySelectorAll("input, select");
     if (inputs) {
       [].forEach.call(inputs, function(input) {
         input.removeAttribute("disabled");
       });
     }
-  };
+  }
 
   var jstabs = function(id, options = {}) {
-
     var el = document.querySelector(id);
 
-    var tabItems = el.querySelectorAll('[data-tab]');
+    var tabItems = el.querySelectorAll("[data-tab]");
 
     var tabIDs = Object.keys(tabItems).map(function(idx) {
       var id = tabItems[idx].getAttribute("data-tab");
@@ -147,9 +144,12 @@
 
     var settings = options;
 
-    settings.off = function() { off(options); };
-    settings.to = function(tabID) { to(tabID, options) };
-
+    settings.off = function() {
+      off(options);
+    };
+    settings.to = function(tabID) {
+      to(tabID, options);
+    };
 
     if (settings.disableInputs) {
       disableInputs(settings);
