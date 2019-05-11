@@ -1,3 +1,8 @@
+/*!
+ * jstabs - Simple vanilla javascript tabs.
+ * Copyright (c) 2019 Tishuk Nadezda - https://github.com/rainjeck/jstabs
+ * License: MIT
+ */
 (function(root, factory) {
   if (typeof define === "function" && define.amd) {
     define(factory);
