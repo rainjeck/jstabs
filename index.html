@@ -121,8 +121,8 @@
               activeTab: '', <em>// active tab on init (element id without "#", default - first)</em>
               disableInputs: false, <em>// if tab contains input elements - disable inputs when tab switch off</em>
               hash: false, <em>// use hash</em>
-              before: function() {}, <em>// action before switch on tab. this - tabs options</em>
-              after: function() {}, <em>// action after tab switch on. this - tabs options</em>
+              before: function(options) {}, <em>// action before tab switch on</em>
+              after: function(options) {}, <em>// action after tab switch on</em>
             });
           </code>
         </pre>
@@ -141,7 +141,7 @@
 
     <div class="demoContainer">
       <div id="tabs2" class="tabNav">
-        <div class="tabItem" data-tab="tab11">Tab 1-1</div>
+        <div class="tabItem" data-tab="tab11"><span>Tab 1-1</span></div>
         <div class="tabItem" data-tab="tab12">Tab 1-2</div>
       </div>
 
@@ -160,15 +160,17 @@
 
       <div class="tab jstabs-tab" id="tab12">
         <p>Tab 1-2</p>
-        <input type="text" value="demo input" />
-        <select>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-        </select>
+        <div class="tabsInContainer">
+          <input type="text" value="demo input" />
+          <select>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+          </select>
+        </div>
       </div>
     </div>
 
-    <script src="dest/jstabs.min.js"></script>
+    <script src="dest/jstabs.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         var tabs = new jstabs("#tabs");
@@ -179,7 +181,13 @@
 
         var tabs2 = new jstabs("#tabs2", {
           hash: true,
-          disableInputs: true
+          disableInputs: true,
+          before: function(options) {
+            console.log('before - activeTab:', options.activeTab);
+          },
+          after: function(options) {
+            console.log('after - activeTab:', options.activeTab);
+          }
         });
 
         var tabsIn = new jstabs("#tabsIn");

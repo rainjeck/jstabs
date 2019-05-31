@@ -34,7 +34,7 @@ active tab on init (element id without "#", default - first)
 if tab contains input elements - disable inputs when tab switch off
 - ```hash: false```
 use hash
-- ```before: function() {}```
-action before switch on tab. this - options
-- ```after: function() {}```
-action after tab switch on. this - options
+- ```before: function(options) {}```
+action before switch on tab
+- ```after: function(options) {}```
+action after tab switch on
