@@ -23,7 +23,7 @@ Include ```jstabs.min.css``` and ```jstabs.min.js```.
 
 ## Usage
 ```
-var tabs = new jstabs('#tabs', {options});
+var tabs = new jstabs.default('#tabs', {options});
 ```
 
 ### Options
