@@ -1,9 +1,10 @@
-/*!
- * jstabs - Simple vanilla javascript tabs.
- * Copyright (c) 2019 Tishuk Nadezda - https://github.com/rainjeck/jstabs
- * License: MIT
+/**
+ * Author and copyright: Tishuk Nadezda (https://github.com/rainjeck)
+ * Repository: https://github.com/rainjeck/jstabs
+ * License: MIT, see file 'LICENSE'
  */
-class jstabs {
+
+export default class jstabs {
   constructor(id, params) {
     this.id = id;
     this.params = params;

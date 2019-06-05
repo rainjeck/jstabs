@@ -20,9 +20,12 @@
       h2 {
         margin-bottom: 1em;
       }
+      pre {
+        white-space: pre-wrap;
+      }
       pre code {
-        white-space: pre;
-        word-break: normal;
+        /* white-space: pre; */
+        /* word-break: normal; */
         line-height: 1.4;
       }
       pre code em {
@@ -97,13 +100,13 @@
           <h2>Layout</h2>
           <pre>
           <code>
-            &lt;div id="tabs"&gt;
-              &lt;div data-tab="tab1"&gt;Tab 1&lt;/div&gt;
-              &lt;div data-tab="tab2"&gt;Tab 2&lt;/div&gt;
-            &lt;/div&gt;
+&lt;div id="tabs"&gt;
+  &lt;div data-tab="tab1"&gt;Tab 1&lt;/div&gt;
+  &lt;div data-tab="tab2"&gt;Tab 2&lt;/div&gt;
+&lt;/div&gt;
 
-            &lt;div class="jstabs-tab" id="tab1"&gt;Tab content 1&lt;/div&gt;
-            &lt;div class="jstabs-tab" id="tab2"&gt;Tab content 2&lt;/div&gt;
+&lt;div class="jstabs-tab" id="tab1"&gt;Tab content 1&lt;/div&gt;
+&lt;div class="jstabs-tab" id="tab2"&gt;Tab content 2&lt;/div&gt;
           </code>
         </pre>
         </div>
@@ -117,13 +120,13 @@
 
           <pre>
           <code>
-            var tabs = new jstabs('#tabs', {
-              activeTab: '', <em>// active tab on init (element id without "#", default - first)</em>
-              disableInputs: false, <em>// if tab contains input elements - disable inputs when tab switch off</em>
-              hash: false, <em>// use hash</em>
-              before: function(options) {}, <em>// action before tab switch on</em>
-              after: function(options) {}, <em>// action after tab switch on</em>
-            });
+var tabs = new jstabs.default('#tabs', {
+  activeTab: '', <em>// active tab on init (element id without "#", default - first)</em>
+  disableInputs: false, <em>// if tab contains input elements - disable inputs when tab switch off</em>
+  hash: false, <em>// use hash</em>
+  before: function(options) {}, <em>// action before tab switch on</em>
+  after: function(options) {}, <em>// action after tab switch on</em>
+});
           </code>
         </pre>
 
@@ -173,13 +176,13 @@
     <script src="dest/jstabs.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
-        var tabs = new jstabs("#tabs");
+        var tabs = new jstabs.default("#tabs");
 
         document.querySelector(".to2").addEventListener("click", function(e) {
           tabs.to("tab2");
         });
 
-        var tabs2 = new jstabs("#tabs2", {
+        var tabs2 = new jstabs.default("#tabs2", {
           hash: true,
           disableInputs: true,
           before: function(options) {
@@ -190,7 +193,7 @@
           }
         });
 
-        var tabsIn = new jstabs("#tabsIn");
+        var tabsIn = new jstabs.default("#tabsIn");
       });
     </script>
   </body>
