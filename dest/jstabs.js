@@ -154,7 +154,7 @@
       key: "disableInputs",
       value: function disableInputs() {
         [].forEach.call(this.tabs, function (tab) {
-          var inputs = tab.querySelectorAll("input, select");
+          var inputs = tab.querySelectorAll("input, select, textarea");
 
           if (inputs) {
             [].forEach.call(inputs, function (input) {
@@ -166,7 +166,7 @@
     }, {
       key: "enableInputs",
       value: function enableInputs(tab) {
-        var inputs = tab.querySelectorAll("input, select");
+        var inputs = tab.querySelectorAll("input, select, textarea");
 
         if (inputs) {
           [].forEach.call(inputs, function (input) {

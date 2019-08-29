@@ -132,7 +132,7 @@ export default class jstabs {
 
   disableInputs() {
     [].forEach.call(this.tabs, (tab) => {
-      var inputs = tab.querySelectorAll("input, select");
+      var inputs = tab.querySelectorAll("input, select, textarea");
 
       if (inputs) {
         [].forEach.call(inputs, (input) => input.setAttribute("disabled", "disabled"));
@@ -141,7 +141,7 @@ export default class jstabs {
   }
 
   enableInputs(tab) {
-    var inputs = tab.querySelectorAll("input, select");
+    var inputs = tab.querySelectorAll("input, select, textarea");
 
     if (inputs) {
       [].forEach.call(inputs, (input) => input.removeAttribute("disabled"));
