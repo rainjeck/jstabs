@@ -108,6 +108,18 @@
           this.params.before(this);
         }
 
+        var input = tabItem.querySelector("input");
+
+        if (input && input.type == "radio") {
+          if (!input.disabled) {
+            input.checked = 'true';
+          }
+
+          if (input.disabled) {
+            return;
+          }
+        }
+
         this.activeTab = tabID;
 
         if (this.params && this.params.disableInputs) {
@@ -117,11 +129,6 @@
         this.off();
         tabItem.classList.add("is-active");
         tab.classList.add("is-active");
-        var input = tabItem.querySelector("input");
-
-        if (input && input.type == "radio") {
-          input.setAttribute("checked", true);
-        }
 
         if (this.params && this.params.disableInputs) {
           this.enableInputs(tab);

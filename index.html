@@ -92,10 +92,13 @@
     <div class="demoContainer">
       <div id="tabs" class="tabNav">
         <div class="tabItem" data-tab="tab1">
-          <input type="radio">
+          <input type="radio" disabled name="name">
           Layout
         </div>
-        <div class="tabItem" data-tab="tab2">Usage</div>
+        <div class="tabItem" data-tab="tab2">
+          <input type="radio" name="name">
+          Usage
+        </div>
       </div>
 
       <div class="tab jstabs-tab" id="tab1">
@@ -172,6 +175,8 @@ var tabs = new jstabs.default('#tabs', {
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
           </select>
+          <br><br>
+          <textarea id="" cols="30" rows="4">Textarea test</textarea>
         </div>
       </div>
     </div>
