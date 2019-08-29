@@ -96,6 +96,12 @@ export default class jstabs {
     tabItem.classList.add("is-active");
     tab.classList.add("is-active");
 
+    const input = tabItem.querySelector("input");
+
+    if (input && input.type == "radio") {
+      input.setAttribute("checked", true);
+    }
+
     if (this.params && this.params.disableInputs) {
       this.enableInputs(tab);
     }
@@ -111,7 +117,14 @@ export default class jstabs {
 
   off() {
 
-    [].forEach.call(this.tabItems, (tabItem) => tabItem.classList.remove("is-active"));
+    [].forEach.call(this.tabItems, (tabItem) => {
+      tabItem.classList.remove("is-active");
+      const input = tabItem.querySelector("input");
+
+      if (input && input.type == "radio") {
+        input.removeAttribute("checked");
+      }
+    });
 
     [].forEach.call(this.tabs, (tab) => tab.classList.remove("is-active"));
 

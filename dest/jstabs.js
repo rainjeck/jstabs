@@ -117,6 +117,11 @@
         this.off();
         tabItem.classList.add("is-active");
         tab.classList.add("is-active");
+        var input = tabItem.querySelector("input");
+
+        if (input && input.type == "radio") {
+          input.setAttribute("checked", true);
+        }
 
         if (this.params && this.params.disableInputs) {
           this.enableInputs(tab);
@@ -134,7 +139,12 @@
       key: "off",
       value: function off() {
         [].forEach.call(this.tabItems, function (tabItem) {
-          return tabItem.classList.remove("is-active");
+          tabItem.classList.remove("is-active");
+          var input = tabItem.querySelector("input");
+
+          if (input && input.type == "radio") {
+            input.removeAttribute("checked");
+          }
         });
         [].forEach.call(this.tabs, function (tab) {
           return tab.classList.remove("is-active");
