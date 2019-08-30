@@ -85,9 +85,9 @@ export default class jstabs {
       this.params.before(this);
     }
 
-    const input = tabItem.querySelector("input");
+    const input = tabItem.querySelector("input[type='radio']");
 
-    if (input && input.type == "radio") {
+    if (input) {
       if (!input.disabled) {
         input.checked = 'true';
       }

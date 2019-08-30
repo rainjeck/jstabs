@@ -108,9 +108,9 @@
           this.params.before(this);
         }
 
-        var input = tabItem.querySelector("input");
+        var input = tabItem.querySelector("input[type='radio']");
 
-        if (input && input.type == "radio") {
+        if (input) {
           if (!input.disabled) {
             input.checked = 'true';
           }
